@@ -2894,7 +2894,7 @@
         container.appendChild(particle);
         setTimeout(() => particle.remove(), 1000);
       }
-   
+    }
 
     // ========== Page Interaction Initializers ==========
     
@@ -3430,7 +3430,6 @@
       }, 1500);
     }
 
- }
     // Interaction state tracking
     const interactionState = {
       mouthClicks: 0,
@@ -3736,12 +3735,7 @@
     // playPauseBtn listener removed
     muteBtn.addEventListener("click", toggleMute);
 
-    audioPlayer.addEventListener("ended", () => {
-      // Auto-play next after audio ends
-      try {
-        setTimeout(() => { nextPage(); }, 1000);
-      } catch(e) {}
-    });
+    audioPlayer.addEventListener("ended", () => { try { setTimeout(() => { nextPage(); }, 1000); } catch(e) {} });
 
     // stopAutoPlay removed
 
@@ -3862,19 +3856,11 @@
     });
   
 // === Overrides to disable order flow ===
-const _origOpenOrderModal = openOrderModal;
-const _origSubmitOrder = submitOrder;
-const _origDismissShareTip = dismissShareTip;
-const _origCloseOrderModal = closeOrderModal;
 openOrderModal = function() { return; };
 submitOrder = function() { return; };
 dismissShareTip = function() { return; };
 closeOrderModal = function() { return; };
-// Hide share tip on load
-try {
-    const stb = document.getElementById('shareTipBanner');
-    if (stb) stb.style.display = 'none';
-} catch(e) {}
+try { const stb = document.getElementById('shareTipBanner'); if (stb) stb.style.display = 'none'; } catch(e) {}
 
   </script>
 </body>
