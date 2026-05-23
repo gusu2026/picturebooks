@@ -2689,7 +2689,7 @@
     prevBtn.addEventListener("click", () => {
       stopAutoPlay();
       prevPage();
-    }
+    });
 
     // ========== Hippo Book Interactive System ==========
     let audioCtx = null;
@@ -3737,12 +3737,13 @@
     muteBtn.addEventListener("click", toggleMute);
 
     audioPlayer.addEventListener("ended", () => {
-      1000);
-      }
+      // Auto-play next after audio ends
+      try {
+        setTimeout(() => { nextPage(); }, 1000);
+      } catch(e) {}
     });
 
     // stopAutoPlay removed
-    }
 
     document.addEventListener("keydown", (e) => {
       // Ignore shortcuts if the user is typing in a form field
@@ -3859,6 +3860,22 @@
         stopAutoPlay();
       }
     });
+  
+// === Overrides to disable order flow ===
+const _origOpenOrderModal = openOrderModal;
+const _origSubmitOrder = submitOrder;
+const _origDismissShareTip = dismissShareTip;
+const _origCloseOrderModal = closeOrderModal;
+openOrderModal = function() { return; };
+submitOrder = function() { return; };
+dismissShareTip = function() { return; };
+closeOrderModal = function() { return; };
+// Hide share tip on load
+try {
+    const stb = document.getElementById('shareTipBanner');
+    if (stb) stb.style.display = 'none';
+} catch(e) {}
+
   </script>
 </body>
 
