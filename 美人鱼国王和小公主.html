@@ -395,7 +395,7 @@
                Pages[0] (Cover) -> type='cover'.
                Cover structure:
                <div class="sheet-front"> <img cover> <overlay>...</div>
-               <div class="sheet-back"> (Page 1 Image) </div>
+               
              */
 
       /* If Sheet 0 Front is Cover HTML. */
@@ -592,21 +592,10 @@
         color: #8b7355;
       }
 
-      .modal-content {
-        height: auto !important;
-        max-height: 85vh;
-        margin-top: auto;
-        margin-bottom: 0;
-        border-radius: 32px 32px 0 0;
-        overflow-y: auto !important;
-        padding-bottom: 50px;
-        -webkit-overflow-scrolling: touch;
-      }
+      
 
       /* Ensure modal is clickable */
-      .modal {
-        align-items: flex-end;
-      }
+      
 
     }
 
@@ -1048,61 +1037,7 @@
       border: 1px solid rgba(255, 255, 255, 0.18);
       font-size: 1.1rem;
       line-height: 1.5;
-    }
-
-    .share-tip-banner {
-      position: fixed;
-      top: 12px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: min(760px, calc(100vw - 24px));
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      background: rgba(255, 251, 240, 0.78);
-      border: 1px solid rgba(224, 213, 193, 0.6);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.14);
-      z-index: 1990;
-      color: #2c3e50;
-      font-size: 0.88rem;
-      line-height: 1.45;
-    }
-
-    .share-tip-banner.hidden {
-      display: none;
-    }
-
-    .share-tip-text {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .share-tip-close {
-      background: transparent;
-      border: none;
-      color: #7a644e;
-      font-size: 1rem;
-      line-height: 1;
-      padding: 4px;
-      cursor: pointer;
-      border-radius: 10px;
-      flex: 0 0 auto;
-    }
-
-    .share-tip-close:hover {
-      background: rgba(122, 100, 78, 0.12);
-    }
-
-    @media (max-width: 480px) {
-      .share-tip-banner {
-        top: 10px;
-        font-size: 0.82rem;
-        padding: 8px 10px;
-      }
-    }
+    }@media (max-width: 480px) {}
 
     .page-text-container {
       width: 100%;
@@ -1364,39 +1299,14 @@
     }
 
     /* Order Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(12px);
-      z-index: 10000;
-      justify-content: center;
-      align-items: center;
-      padding: 20px 0;
-    }
+    
 
     .modal.visible {
       display: flex;
       animation: fadeIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
 
-    .modal-content {
-      background: #fffdf9;
-      width: 90%;
-      max-width: 500px;
-      max-height: calc(100vh - 40px);
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      padding: 40px;
-      border-radius: 32px;
-      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.2);
-      position: relative;
-      border: 1px solid rgba(212, 165, 116, 0.3);
-    }
+    
 
     .modal-content h3 {
       margin-top: 0;
@@ -1407,16 +1317,9 @@
       font-family: var(--font-fancy);
     }
 
-    .field-group-title {
-      font-weight: bold;
-      font-size: 1.1rem;
-      margin-bottom: 15px;
-      color: #5c4b37;
-    }
+    
 
-    .field-item {
-      margin-bottom: 20px;
-    }
+    
 
     .field-item label {
       display: block;
@@ -1430,10 +1333,7 @@
       color: #e67e22;
     }
 
-    .address-select-group {
-      display: flex;
-      gap: 10px;
-    }
+    
 
     .address-select-group select,
     .field-item input {
@@ -1507,40 +1407,18 @@
       border-bottom: 1px solid currentColor;
     }
 
-    .modal-footer {
-      margin-top: 35px;
-      display: flex;
-      gap: 15px;
-    }
+    
 
-    .modal-btn {
-      flex: 1;
-      padding: 16px;
-      border-radius: 16px;
-      border: none;
-      font-size: 1.1rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
+    
 
-    .cancel-btn {
-      background: #fff;
-      border: 1.5px solid #e0d5c1;
-      color: #7a644e;
-    }
+    
 
     .cancel-btn:hover {
       background: #fdf6ec;
       transform: translateY(-2px);
     }
 
-    .submit-btn {
-      background: #7a644e;
-      color: white;
-      box-shadow: 0 8px 20px rgba(122, 100, 78, 0.3);
-      position: relative;
-    }
+    
 
     .submit-btn::after {
       content: "🎁";
@@ -1939,9 +1817,7 @@
     <div class="progress-bar" id="progressBar"></div>
   </div>
 
-  <div id="shareTipBanner" class="share-tip-banner" role="note" aria-live="polite">
-    <div class="share-tip-text">在完成下单流程前，请谨慎分享该页面；建议完成商品下单积分兑换后，再分享。</div>
-    <button class="share-tip-close" onclick="dismissShareTip()" aria-label="关闭提示">✕</button>
+    
   </div>
 
   <div class="book-container closed" id="book">
@@ -1958,75 +1834,10 @@
     <button class="btn" id="prevBtn" title="上一页">←</button>
     <button class="btn" id="muteBtn" title="静音">🔊</button>
     <button class="btn" id="nextBtn" title="下一页">→</button>
-    <button class="btn btn-print" id="printBtn">一键打印！</button>
+    
   </div>
 
-  <div id="orderModal" class="modal">
-    <div class="modal-content">
-
-      <h3>一键下单，绘本给你邮寄到家</h3>
-
-      <div class="field-group-title">地址</div>
-
-      <div class="field-item">
-        <label>所在地区 <span>*</span></label>
-        <div class="address-select-group">
-          <select id="province">
-            <option value="">省份</option>
-          </select>
-          <select id="city">
-            <option value="">城市</option>
-          </select>
-          <select id="district">
-            <option value="">区县</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="field-item">
-        <label>详细地址与门牌号 <span>*</span></label>
-        <input type="text" id="detailAddress" placeholder="如：XX街道XX小区X号楼X单元XXX" />
-      </div>
-
-      <div class="field-item">
-        <label>收货人名字 <span>*</span></label>
-        <input type="text" id="receiverName" placeholder="请填写收货人姓名" />
-      </div>
-
-      <div class="field-item">
-        <label>手机号 <span>*</span></label>
-        <div class="phone-input">
-          <span>+86</span>
-          <input type="text" id="phone" placeholder="手机号" />
-        </div>
-      </div>
-
-      <div class="price-info">
-        所需积分：<span>30000</span>
-        <a href="https://space.coze.cn/?invite_reward=1" class="help-link" target="_blank" rel="noopener noreferrer">如何获取积分?</a>
-        <a href="https://docs.coze.cn/cozespace/coze_new_year_event" class="help-link" target="_blank" rel="noopener noreferrer">活动规则</a>
-      </div>
-
-      <div class="field-item checkbox-item">
-        <input type="checkbox" id="agreementCheckbox" />
-        <label for="agreementCheckbox" class="agreement-label">
-          我已阅读并同意：<br />
-          • 积分兑换成功后<strong>无法申请退款</strong><br />
-          • <strong>创作风险须知</strong>：包含侵权或版权风险的绘本将在下单阶段被人工筛查，请避免下单此类书籍<br />
-          • <strong>因春节快递停运，近期下单将在节后开始制作，请您耐心等候<strong>
-        </label>
-      </div>
-
-      <div class="modal-footer">
-        <button class="modal-btn cancel-btn" onclick="closeOrderModal()">
-          取消
-        </button>
-        <button class="modal-btn submit-btn" onclick="submitOrder()">
-          确认下单
-        </button>
-      </div>
-    </div>
-  </div>
+  
 
   <audio id="audioPlayer"></audio>
   <audio id="bgmPlayer" loop>
@@ -2042,8 +1853,6 @@
     "author": "Created by 小伍",
     "pdf_path": "mermaid_story/美人鱼国王和小公主.pdf",
     "project_root": "skill_spring-festival-picturebook",
-    "access_token": null,
-    "task_id": "tencent_cloud_ins-lqot6mej",
     "address_level_data": [],
     "pages": [
         {
@@ -2239,13 +2048,7 @@
     }
 
     const shareTipBanner = document.getElementById("shareTipBanner");
-    function dismissShareTip() {
-      if (!shareTipBanner) return;
-      shareTipBanner.classList.add("hidden");
-      try {
-        localStorage.setItem("share_tip_banner_dismissed", "1");
-      } catch (e) {}
-    }
+    
 
     function updateShareTipVisibility() {
       if (!shareTipBanner) return;
@@ -2739,295 +2542,7 @@
       nextPage();
     });
 
-    const printBtn = document.getElementById("printBtn");
-    const orderModal = document.getElementById("orderModal");
-    const provinceSelect = document.getElementById("province");
-    const citySelect = document.getElementById("city");
-    const districtSelect = document.getElementById("district");
-
-    // --- iOS Keyboard Handling (Iframe Compatible) ---
-
-    const isMobileDevice = window.innerWidth < 768;
-
-    const addressLevelData =
-      PICTUREBOOK_CONFIG.address_level_data ||
-      window.__ADDRESS_LEVEL_DATA__ ||
-      null;
-    let addressMap = null;
-    let isAddressInitialized = false;
-
-    function resetAddressSelects() {
-      provinceSelect.innerHTML = '<option value="">省份</option>';
-      citySelect.innerHTML = '<option value="">城市</option>';
-      districtSelect.innerHTML = '<option value="">区县</option>';
-    }
-
-    function initAddress() {
-      if (isAddressInitialized) return;
-      isAddressInitialized = true;
-
-      resetAddressSelects();
-
-      if (!addressLevelData || !Array.isArray(addressLevelData)) {
-        isAddressInitialized = false;
-        showToast("地址数据未加载，请刷新重试");
-        return;
-      }
-
-      addressMap = new Map();
-      addressLevelData.forEach((p) => {
-        if (p && p.n) addressMap.set(p.n, p);
-      });
-
-      for (const provinceName of addressMap.keys()) {
-        const opt = document.createElement("option");
-        opt.value = provinceName;
-        opt.innerText = provinceName;
-        provinceSelect.appendChild(opt);
-      }
-
-      provinceSelect.onchange = function () {
-        citySelect.innerHTML = '<option value="">城市</option>';
-        districtSelect.innerHTML = '<option value="">区县</option>';
-        if (!this.value) return;
-
-        const province = addressMap.get(this.value);
-        const children = (province && province.d) || [];
-
-        if (children.length > 0 && Array.isArray(children[0].d)) {
-          children.forEach((city) => {
-            const opt = document.createElement("option");
-            opt.value = city.n;
-            opt.innerText = city.n;
-            citySelect.appendChild(opt);
-          });
-          return;
-        }
-
-        const cityOpt = document.createElement("option");
-        cityOpt.value = this.value;
-        cityOpt.innerText = this.value;
-        citySelect.appendChild(cityOpt);
-        citySelect.value = this.value;
-
-        children.forEach((area) => {
-          const opt = document.createElement("option");
-          opt.value = area.n;
-          opt.innerText = area.n;
-          districtSelect.appendChild(opt);
-        });
-      };
-
-      citySelect.onchange = function () {
-        districtSelect.innerHTML = '<option value="">区县</option>';
-        if (!this.value) return;
-
-        const provinceName = provinceSelect.value;
-        if (!provinceName) return;
-
-        const province = addressMap.get(provinceName);
-        const cities = (province && province.d) || [];
-
-        const city = cities.find((c) => c && c.n === this.value);
-        const areas = (city && city.d) || [];
-
-        areas.forEach((area) => {
-          const opt = document.createElement("option");
-          opt.value = area.n;
-          opt.innerText = area.n;
-          districtSelect.appendChild(opt);
-        });
-      };
-    }
-
-    function openOrderModal() {
-      orderModal.classList.add("visible");
-      initAddress();
-    }
-
-    function closeOrderModal() {
-      orderModal.classList.remove("visible");
-    }
-
-    function submitOrder() {
-      const province = provinceSelect.value;
-      const city = citySelect.value;
-      const district = document.getElementById("district").value.trim();
-      const detailAddress = document
-        .getElementById("detailAddress")
-        .value.trim();
-      const receiverName = document
-        .getElementById("receiverName")
-        .value.trim();
-      const phone = document.getElementById("phone").value.trim();
-
-      if (
-        !province ||
-        !city ||
-        !district ||
-        !detailAddress ||
-        !receiverName ||
-        !phone 
-      ) {
-        showToast("请填写完整的收货信息！");
-        return;
-      }
-
-      if (!/^1[3-9]\d{9}$/.test(phone)) {
-        showToast("请输入有效的手机号码！");
-        return;
-      }
-
-      const agreementChecked = document.getElementById("agreementCheckbox")
-        .checked;
-      if (!agreementChecked) {
-        showToast("请阅读并勾选下单须知和风险提示！");
-        return;
-      }
-
-      // Prepare delivery info
-      const fullAddress = `${province}${city}${district}${detailAddress}`;
-      const delivery_info = {
-        delivery_address: fullAddress,
-        contact_name: receiverName,
-        contact_phone: phone,
-      };
-
-      // Add close button if not exists
-      if (!orderModal.querySelector(".modal-close-btn")) {
-        const closeBtn = document.createElement("div");
-        closeBtn.className = "modal-close-btn";
-        closeBtn.innerHTML = "✕";
-        closeBtn.onclick = closeOrderModal;
-        orderModal.querySelector(".modal-content").appendChild(closeBtn);
-      }
-
-     const pdf_path =
-        PICTUREBOOK_CONFIG.pdf_path || `${PICTUREBOOK_CONFIG.title}.pdf`;
-      const access_token = PICTUREBOOK_CONFIG.access_token;
-      const task_id = PICTUREBOOK_CONFIG.task_id;
-
-      if (!access_token || !task_id) {
-        showToast("未检测到有效的下单凭证，请联系脚本生成者。");
-        return;
-      }
-
-      // Loading state
-      const btn = document.querySelector(".submit-btn");
-      const originalText = btn.innerText;
-      btn.innerText = "正在发起打印...";
-      btn.disabled = true;
-
-      const project_root =
-        PICTUREBOOK_CONFIG.project_root || "picturebook-skill";
-      const product_uri = `${task_id}-data_volume/files/${project_root}/${pdf_path}`;
-
-      fetch("https://api.coze.cn/v1/commerce/incentive/rewards/products", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${access_token}`,
-        },
-        body: JSON.stringify({
-          product_uri: product_uri,
-          product_type: "PictureBook",
-          count: 1,
-          delivery_info: {
-            delivery_address: delivery_info.delivery_address,
-            contact_name: delivery_info.contact_name,
-            contact_phone: delivery_info.contact_phone,
-          },
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          let message = "";
-          let isProminent = true;
-
-          // The Coze API usually returns a code 0 or message 'success'
-          if (
-            data.code === 0 ||
-            data.message === "success" ||
-            data.msg === "success"
-          ) {
-            closeOrderModal();
-            message = "下单成功，但因春节快递停运，本次下单将在节后开始制作，请您耐心等候";
-          } else {
-            const code = data.code;
-            switch (code) {
-              case 5000:
-                message = "内部错误，平台原因，请联系官方同学";
-                break;
-              case 4000:
-                message = "绘本下单活动仅限领取一次，不支持多次领取";
-                break;
-              case 4101:
-                message = "权限不足，平台原因，请联系官方同学";
-                break;
-              case 4011:
-                message = "账号积分不足，请获取积分后重试";
-                break;
-              case 4052:
-                message = "当前活动仅支持个人版/免费版用户参加";
-                break;
-              default:
-                message =
-                  "提交失败: " + (data.message || data.msg || "未知错误");
-                isProminent = false;
-            }
-          }
-          showToast(message, isProminent);
-        })
-        .catch((err) => {
-          console.error("Print error:", err);
-          showToast("提交申请失败，请检查网络或确认外部 API 是否可用");
-        })
-        .finally(() => {
-          btn.innerText = originalText;
-          btn.disabled = false;
-        });
-    }
-
-    // --- iOS Keyboard Handling (Global Scope) ---
-    // Create a hidden input for the "focus trap" technique
-    let hiddenInput = document.getElementById("hiddenKeyboardDismissInput");
-    if (!hiddenInput) {
-      hiddenInput = document.createElement("input");
-      hiddenInput.id = "hiddenKeyboardDismissInput";
-      hiddenInput.type = "text";
-      hiddenInput.style.cssText =
-        "position:fixed;top:-100px;left:-100px;opacity:0;width:1px;height:1px;border:none;";
-      hiddenInput.setAttribute("readonly", "readonly");
-      document.body.appendChild(hiddenInput);
-    }
-
-    window.dismissAllKeyboards = function () {
-      const activeEl = document.activeElement;
-      if (activeEl && activeEl.blur) activeEl.blur();
-      if (hiddenInput) {
-        hiddenInput.focus();
-        hiddenInput.blur();
-      }
-      if (activeEl && (activeEl.tagName === "INPUT" || activeEl.tagName === "TEXTAREA")) {
-        const wasReadonly = activeEl.readOnly;
-        activeEl.readOnly = true;
-        activeEl.blur();
-        setTimeout(() => { activeEl.readOnly = wasReadonly; }, 100);
-      }
-      try {
-        if (window.parent && window.parent !== window) {
-          window.parent.postMessage({ type: "DISMISS_KEYBOARD" }, "*");
-        }
-      } catch (e) { }
-    };
-
-    printBtn.addEventListener("click", openOrderModal);
-
-    muteBtn.addEventListener("click", toggleMute);
-
-    audioPlayer.addEventListener("ended", () => {
-      // Audio ended - no auto-advance, user flips manually
-    });
+    const 
 
     // Keyboard navigation
     document.addEventListener("keydown", (e) => {
@@ -3053,16 +2568,7 @@
         toggleMute();
       }
     });
-
-    // Show dismiss bar when any input is focused
-    const allInputs = orderModal.querySelectorAll("input, textarea, select");
-    allInputs.forEach((input) => {
-      input.addEventListener("focus", () => {
-        if (isMobileDevice) {
-          // Scroll the input into view with some padding
-          setTimeout(() => {
-            input.scrollIntoView({ behavior: "smooth", block: "center" });
-          }, 300);
+    }, 300);
         }
       });
       input.addEventListener("blur", () => {
@@ -3071,7 +2577,6 @@
     });
 
     // Fallback: Touch on non-input areas dismisses keyboard
-    orderModal.addEventListener(
       "click",
       (e) => {
         // Give a small delay to check if user tapped on another input
