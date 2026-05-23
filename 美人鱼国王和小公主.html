@@ -3615,6 +3615,17 @@
         updateProgress();
       }
     });
+  
+// === Overrides to disable order flow ===
+openOrderModal = function() { return; };
+submitOrder = function() { return; };
+dismissShareTip = function() { return; };
+closeOrderModal = function() { return; };
+try {
+    const stb = document.getElementById('shareTipBanner');
+    if (stb) stb.style.display = 'none';
+} catch(e) {}
+
   </script>
 </body>
 
