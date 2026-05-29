@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>研发项目进度管理模板 - 使用文档</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;max-width:800px;margin:0 auto;padding:20px;line-height:1.7;color:#333}
+h1{border-bottom:2px solid #3370ff;padding-bottom:8px}
+h2{margin-top:2em;color:#1f2329}
+h3{color:#4e5969}
+table{border-collapse:collapse;width:100%;margin:12px 0}
+th,td{border:1px solid #e5e6eb;padding:8px 12px;text-align:left}
+th{background:#f2f3f5;font-weight:600}
+code{background:#f2f3f5;padding:2px 6px;border-radius:3px;font-size:0.9em}
+blockquote{border-left:3px solid #3370ff;padding:4px 12px;margin:12px 0;background:#f7f8fa;color:#4e5969}
+hr{border:none;border-top:1px solid #e5e6eb;margin:2em 0}
+</style>
+</head>
+<body>
+<h1 id="-">研发项目进度管理模板 - 使用操作文档</h1>
+<blockquote>
+<p>本模板基于飞书多维表格搭建，适用于研发项目的全流程进度管理，涵盖项目总览、任务跟踪、干系人管理、风险管控、里程碑管理和临时待办六大模块。</p>
+</blockquote>
+<hr />
+<h2 id="_1">一、模板结构总览</h2>
+<table>
+<thead>
+<tr>
+<th>数据表</th>
+<th>用途</th>
+<th>核心字段</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>项目总览</strong></td>
+<td>管理所有项目的基本信息和状态</td>
+<td>项目名称、项目负责人、项目状态、开始日期、目标上线日、项目整体进度、AI项目周报</td>
+</tr>
+<tr>
+<td><strong>项目任务</strong></td>
+<td>跟踪每个项目下的具体任务</td>
+<td>任务名称、所属项目、所属阶段、负责人、优先级、状态、计划开始/结束、进度、是否延期、剩余天数、AI延期建议</td>
+</tr>
+<tr>
+<td><strong>干系人管理</strong></td>
+<td>记录项目相关方信息和沟通策略</td>
+<td>姓名、角色、影响力、关注点、沟通频率</td>
+</tr>
+<tr>
+<td><strong>风险点管理</strong></td>
+<td>识别和跟踪项目风险</td>
+<td>风险描述、风险类型、发生概率、影响程度、当前状态、应对措施、AI风险分析</td>
+</tr>
+<tr>
+<td><strong>里程碑</strong></td>
+<td>标记项目关键节点和达成情况</td>
+<td>里程碑名称、所属项目、计划达成日、实际达成日、状态</td>
+</tr>
+<tr>
+<td><strong>临时待办</strong></td>
+<td>记录临时产生的待办事项</td>
+<td>待办内容、来源、优先级、状态、是否转任务</td>
+</tr>
+</tbody>
+</table>
+<p><strong>表间关系</strong>：
+- 项目任务、干系人管理、风险点管理、里程碑、临时待办都通过关联字段连接到项目总览
+- 在项目总览中可一键展开查看该项目下的所有任务、干系人、风险、里程碑和待办
+- 项目任务支持<strong>前置任务→后续任务</strong>的依赖关系链</p>
+<hr />
+<h2 id="_2">二、快速上手</h2>
+<h3 id="21">2.1 创建新项目</h3>
+<ol>
+<li>打开「项目总览」表</li>
+<li>点击底部 <strong>+</strong> 新增一行</li>
+<li>填写：项目名称、项目负责人（选择成员）、项目状态、开始日期、目标上线日</li>
+<li><strong>项目整体进度</strong>会自动计算（基于关联子任务的进度平均值），无需手动填写</li>
+</ol>
+<h3 id="22">2.2 添加项目任务</h3>
+<ol>
+<li>打开「项目任务」表</li>
+<li>新增一行，填写任务名称</li>
+<li>在「所属项目」字段中选择对应的项目</li>
+<li>设置：所属阶段（需求/设计/开发/测试/上线）、优先级、负责人</li>
+<li>填写计划开始和计划结束日期</li>
+<li>进度字段填写0-100的数字，会自动显示为进度条</li>
+<li><strong>是否延期</strong>和<strong>剩余天数</strong>自动计算：</li>
+<li>已完成任务显示"正常"/"-"</li>
+<li>未完成且已过截止日显示"⚠️ 延期"</li>
+<li>未完成未过期显示距离截止日的剩余天数</li>
+</ol>
+<h3 id="23">2.3 设置任务依赖</h3>
+<ol>
+<li>在项目任务的「前置任务」字段中选择需要先完成的任务</li>
+<li>被选中的任务会自动在「后续任务」字段中显示当前任务</li>
+<li>用于标记任务间的先后依赖关系，如：需求调研 → 系统设计 → 开发实现</li>
+</ol>
+<h3 id="24">2.4 管理干系人</h3>
+<ol>
+<li>打开「干系人管理」表</li>
+<li>新增干系人信息</li>
+<li>关键字段说明：</li>
+<li><strong>角色</strong>：发起人/决策者/核心成员/支持方/外部合作</li>
+<li><strong>影响力</strong>：高/中/低，帮助判断沟通优先级</li>
+<li><strong>关注点</strong>：记录此人最在意什么，方便针对性沟通</li>
+<li><strong>沟通频率</strong>：每日/每周/双周/按需</li>
+</ol>
+<h3 id="25">2.5 登记风险</h3>
+<ol>
+<li>打开「风险点管理」表，或通过<strong>风险登记表单</strong>提交</li>
+<li>关键字段说明：</li>
+<li><strong>发生概率×影响程度</strong>：帮助判断风险等级，概率高+影响严重的风险需重点关注</li>
+<li><strong>当前状态</strong>：识别中→监控中→已发生/已缓解→已关闭</li>
+<li><strong>应对措施</strong>：务必填写，未写应对措施的风险等于没管理</li>
+<li>⚠️ 当风险状态变为"已发生"时，系统会<strong>自动通知</strong>项目负责人</li>
+</ol>
+<h3 id="26">2.6 管理里程碑</h3>
+<ol>
+<li>打开「里程碑」表</li>
+<li>新增里程碑，填写名称和计划达成日</li>
+<li>关联到所属项目</li>
+<li>里程碑达成后，填写实际达成日并将状态改为"已达成"</li>
+<li>可用<strong>里程碑甘特图</strong>视图查看所有里程碑的时间分布</li>
+</ol>
+<h3 id="27">2.7 记录临时待办</h3>
+<ol>
+<li>打开「临时待办」表，或通过<strong>临时待办提交表单</strong>快速提交</li>
+<li>如果某个待办后续需要转为正式任务，将「是否转任务」设为"是"，然后在项目任务表中创建对应任务</li>
+</ol>
+<hr />
+<h2 id="_3">三、视图使用指南</h2>
+<h3 id="31">3.1 甘特图视图（项目任务）</h3>
+<ul>
+<li><strong>用途</strong>：按时间轴查看所有任务的排期和进度</li>
+<li><strong>使用方式</strong>：</li>
+<li>时间轴上每个色条代表一个任务，长度为计划开始到计划结束</li>
+<li>进度条内会显示完成比例</li>
+<li>可以直接拖拽调整任务时间</li>
+<li><strong>适用场景</strong>：项目排期评审、里程碑检查</li>
+</ul>
+<h3 id="32">3.2 看板视图（项目任务）</h3>
+<ul>
+<li><strong>用途</strong>：按状态拖拽管理任务，适合每日站会</li>
+<li><strong>使用方式</strong>：</li>
+<li>每列代表一个状态（待启动/进行中/待验收/已完成/已搁置）</li>
+<li>直接拖拽卡片到对应列即可更新状态</li>
+<li><strong>适用场景</strong>：每日站会、状态同步</li>
+</ul>
+<h3 id="33">3.3 按项目分组视图（项目任务）</h3>
+<ul>
+<li><strong>用途</strong>：按项目维度查看所有任务，一目了然</li>
+<li><strong>使用方式</strong>：自动按所属项目分组，组内按优先级排序</li>
+<li><strong>适用场景</strong>：多项目并行管理、项目负责人查看自己项目下的所有任务</li>
+</ul>
+<h3 id="34">3.4 延期预警视图（项目任务）</h3>
+<ul>
+<li><strong>用途</strong>：自动筛选出已过期但未完成的任务</li>
+<li><strong>筛选条件</strong>：计划结束日期 &lt; 今天，且状态不是"已完成"或"已搁置"</li>
+<li><strong>也可直接看「是否延期」字段</strong>：显示"⚠️ 延期"的即为逾期任务</li>
+<li><strong>适用场景</strong>：每日检查、项目风险预警</li>
+</ul>
+<h3 id="35">3.5 里程碑甘特图（里程碑）</h3>
+<ul>
+<li><strong>用途</strong>：按时间轴查看所有里程碑节点</li>
+<li><strong>使用方式</strong>：时间轴上标记各里程碑的计划和实际达成时间</li>
+<li><strong>适用场景</strong>：里程碑评审、关键节点检查</li>
+</ul>
+<h3 id="36">3.6 风险看板（风险点管理）</h3>
+<ul>
+<li><strong>用途</strong>：按风险状态拖拽管理</li>
+<li><strong>使用方式</strong>：同任务看板，拖拽卡片更新状态</li>
+<li><strong>适用场景</strong>：风险评审会议</li>
+</ul>
+<h3 id="37">3.7 待办看板 &amp; 待处理项（临时待办）</h3>
+<ul>
+<li><strong>待办看板</strong>：按状态拖拽管理待办</li>
+<li><strong>待处理项</strong>：自动筛选出"待处理"和"进行中"的待办，聚焦当前要做的事</li>
+</ul>
+<hr />
+<h2 id="_4">四、仪表盘使用</h2>
+<p>打开「项目数据看板」仪表盘，可以看到：</p>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>任务总数</td>
+<td>指标卡</td>
+<td>当前所有任务的总数</td>
+</tr>
+<tr>
+<td>项目状态分布</td>
+<td>饼图</td>
+<td>各状态的项目数量占比</td>
+</tr>
+<tr>
+<td>任务状态分布</td>
+<td>饼图</td>
+<td>各状态的任务数量占比</td>
+</tr>
+<tr>
+<td>各阶段任务数</td>
+<td>柱状图</td>
+<td>需求/设计/开发/测试/上线各阶段的任务数</td>
+</tr>
+<tr>
+<td>风险状态分布</td>
+<td>环形图</td>
+<td>识别中/监控中/已发生/已缓解/已关闭的风险数</td>
+</tr>
+<tr>
+<td>待处理待办</td>
+<td>指标卡</td>
+<td>当前待处理和进行中的待办总数</td>
+</tr>
+<tr>
+<td>风险类型分布</td>
+<td>条形图</td>
+<td>各风险类型的数量分布</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 仪表盘数据会随表格数据实时更新，无需手动刷新。</p>
+</blockquote>
+<hr />
+<h2 id="ai">五、自动化提醒与AI智能分析</h2>
+<p>模板已配置6个自动化工作流（含3个AI智能分析），开箱即用：</p>
+<h3 id="51">5.1 基础提醒</h3>
+<table>
+<thead>
+<tr>
+<th>自动化</th>
+<th>触发条件</th>
+<th>动作</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>任务到期提醒</strong></td>
+<td>任务计划结束日期前1天（每天9:00）</td>
+<td>飞书消息通知任务负责人</td>
+<td>✅ 已启用</td>
+</tr>
+<tr>
+<td><strong>新任务通知</strong></td>
+<td>项目任务表中新增记录</td>
+<td>飞书消息通知任务执行人</td>
+<td>✅ 已启用</td>
+</tr>
+<tr>
+<td><strong>风险已发生通知</strong></td>
+<td>风险的「当前状态」被修改为"已发生"</td>
+<td>飞书消息通知项目负责人</td>
+<td>✅ 已启用</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52-ai">5.2 AI智能分析</h3>
+<table>
+<thead>
+<tr>
+<th>自动化</th>
+<th>触发条件</th>
+<th>AI做什么</th>
+<th>结果写入</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AI风险分析建议</strong></td>
+<td>新增风险记录</td>
+<td>分析风险等级、根本原因、应对策略、行动建议</td>
+<td>「AI风险分析」字段</td>
+<td>✅ 已启用</td>
+</tr>
+<tr>
+<td><strong>AI延期任务诊断</strong></td>
+<td>任务状态变为"已搁置"</td>
+<td>分析搁置原因、是否建议恢复、替代方案、项目影响</td>
+<td>「AI延期建议」字段</td>
+<td>✅ 已启用</td>
+</tr>
+<tr>
+<td><strong>AI项目周报</strong></td>
+<td>每周五17:00自动触发</td>
+<td>汇总进行中项目的进度，生成周报摘要</td>
+<td>飞书消息推送</td>
+<td>✅ 已启用</td>
+</tr>
+</tbody>
+</table>
+<p><strong>AI风险分析</strong>输出示例：</p>
+<blockquote>
+<p>风险等级：高（概率中×影响严重）。根本原因：NLP模型训练数据不足或质量问题。应对策略：减轻——准备关键词匹配兜底方案，同时增加训练数据。行动建议：①评估兜底方案的开发工作量 ②增加行业语料数据 ③设置准确率阈值，低于80%自动切换兜底。关键信号：连续3天准确率下降或测试集表现不稳定。</p>
+</blockquote>
+<p><strong>AI延期任务诊断</strong>输出示例：</p>
+<blockquote>
+<p>搁置原因：可能是资源被调走或优先级降低。建议：若该任务对项目交付非关键，可维持搁置并记录影响范围；若为核心功能，建议重新评估资源分配。影响评估：该任务延期可能影响后续测试阶段的启动时间，需关注项目整体排期。</p>
+<p>💡 如需调整触发条件、AI提示词或通知接收人，可在多维表格的「自动化」标签页中修改。</p>
+</blockquote>
+<hr />
+<h2 id="_5">六、表单入口</h2>
+<p>模板配置了2个表单，方便非项目组成员快速提交信息：</p>
+<table>
+<thead>
+<tr>
+<th>表单</th>
+<th>用途</th>
+<th>填写字段</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>临时待办提交</strong></td>
+<td>快速提交一个待办事项</td>
+<td>待办内容、来源、优先级、截止时间、是否转任务</td>
+</tr>
+<tr>
+<td><strong>风险登记</strong></td>
+<td>发现风险时快速登记</td>
+<td>风险描述、风险类型、发生概率、影响程度、应对措施、截止处理日</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 表单提交后数据自动写入对应表格，无需手动录入。可在多维表格的「表单」标签页获取分享链接。</p>
+</blockquote>
+<hr />
+<h2 id="_6">七、最佳实践</h2>
+<h3 id="71">7.1 日常使用节奏</h3>
+<table>
+<thead>
+<tr>
+<th>频率</th>
+<th>动作</th>
+<th>使用视图/工具</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>每日</strong></td>
+<td>检查延期预警视图，确认是否有任务逾期</td>
+<td>延期预警 / 是否延期字段</td>
+</tr>
+<tr>
+<td><strong>每日</strong></td>
+<td>更新进行中任务的进度</td>
+<td>看板视图</td>
+</tr>
+<tr>
+<td><strong>每日</strong></td>
+<td>处理和清理临时待办</td>
+<td>待处理项</td>
+</tr>
+<tr>
+<td><strong>每周</strong></td>
+<td>站会上用看板视图同步任务状态</td>
+<td>看板视图</td>
+</tr>
+<tr>
+<td><strong>每周</strong></td>
+<td>检查风险看板，确认风险是否需要升级</td>
+<td>风险看板</td>
+</tr>
+<tr>
+<td><strong>双周/每月</strong></td>
+<td>用甘特图回顾项目整体排期</td>
+<td>甘特图</td>
+</tr>
+<tr>
+<td><strong>每月</strong></td>
+<td>查看仪表盘，做项目数据复盘</td>
+<td>仪表盘</td>
+</tr>
+<tr>
+<td><strong>里程碑节点</strong></td>
+<td>更新里程碑达成状态</td>
+<td>里程碑甘特图</td>
+</tr>
+</tbody>
+</table>
+<h3 id="72">7.2 填写规范</h3>
+<ul>
+<li><strong>进度字段</strong>：填写0-100的整数，不要填小数</li>
+<li><strong>日期字段</strong>：务必填写计划开始和结束日期，否则甘特图无法正确展示</li>
+<li><strong>优先级</strong>：P0紧急只用于真的紧急的事项，不要全部标P0</li>
+<li><strong>状态流转</strong>：待启动→进行中→待验收→已完成，不要跳步</li>
+<li><strong>风险应对措施</strong>：每个风险都应有应对措施，空着等于没管理</li>
+<li><strong>状态变更原因</strong>：任务搁置、延期或状态回退时，务必填写「状态变更原因」</li>
+<li><strong>前置任务</strong>：设置任务依赖时，只关联真正有前后依赖关系的任务</li>
+</ul>
+<h3 id="73">7.3 项目状态定义</h3>
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>定义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>规划中</td>
+<td>项目还在需求调研和方案设计阶段</td>
+</tr>
+<tr>
+<td>进行中</td>
+<td>项目已启动，任务正在执行</td>
+</tr>
+<tr>
+<td>已上线</td>
+<td>项目已交付上线</td>
+</tr>
+<tr>
+<td>已暂停</td>
+<td>项目因故暂停，需标注原因</td>
+</tr>
+</tbody>
+</table>
+<h3 id="74">7.4 里程碑状态定义</h3>
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>定义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>未开始</td>
+<td>里程碑节点尚未到达</td>
+</tr>
+<tr>
+<td>进行中</td>
+<td>当前正在向该里程碑推进</td>
+</tr>
+<tr>
+<td>已达成</td>
+<td>里程碑达成，需填写实际达成日</td>
+</tr>
+<tr>
+<td>已延期</td>
+<td>超过计划达成日但尚未达成</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_7">八、常见问题</h2>
+<p><strong>Q：如何把待办转为正式任务？</strong>
+A：在临时待办表中将「是否转任务」设为"是"，然后在项目任务表中创建对应任务并关联项目。</p>
+<p><strong>Q：甘特图里看不到某些任务？</strong>
+A：检查该任务是否填写了「计划开始」和「计划结束」日期，没有日期的任务不会出现在甘特图上。</p>
+<p><strong>Q：如何添加新的项目阶段/优先级选项？</strong>
+A：点击对应字段的字段名→字段设置→添加选项即可。建议在添加前统一团队内的选项标准。</p>
+<p><strong>Q：「是否延期」字段显示不正确？</strong>
+A：该字段为公式自动计算，逻辑为：计划结束日期早于今天且状态非"已完成"/"已搁置"时显示延期。请检查计划结束日期和状态是否正确。</p>
+<p><strong>Q：「项目整体进度」是如何计算的？</strong>
+A：取该项目下所有关联任务进度的平均值。如某个项目有5个任务，进度分别为100/80/60/30/0，则项目整体进度为54%。</p>
+<p><strong>Q：如何通过表单提交待办或风险？</strong>
+A：在多维表格中切换到「表单」标签页，找到对应表单并获取分享链接，发送给需要提交的人即可。</p>
+<p><strong>Q：自动化提醒没有收到？</strong>
+A：请在多维表格的「自动化」标签页中检查：1) 工作流是否已启用；2) 接收人是否正确；3) 触发条件是否满足。</p>
+<p><strong>Q：如何将模板分享给团队？</strong>
+A：点击右上角「分享」按钮，添加团队成员并设置编辑权限即可。</p>
+<hr />
+<h2 id="_8">九、自定义建议</h2>
+<p>本模板是基础框架，你可以根据团队实际情况做以下调整：</p>
+<ol>
+<li><strong>增加字段</strong>：如「任务类型」（前端/后端/测试）、「估时」（人天）等</li>
+<li><strong>增加视图</strong>：如按负责人的筛选视图、按项目的分组视图</li>
+<li><strong>调整自动化</strong>：</li>
+<li>修改提醒接收人（如添加项目经理）</li>
+<li>增加触发条件（如任务状态变更时通知）</li>
+<li>增加延迟后提醒（到期后3天仍未完成再次提醒）</li>
+<li><strong>添加仪表盘组件</strong>：如按负责人的任务数分布、项目延期率、里程碑达成率等</li>
+<li><strong>启用高级权限</strong>：按角色设置不同人员看到不同数据</li>
+</ol>
+<hr />
+<p><em>文档版本：v3.0 | 更新日期：2026年5月22日 | 更新内容：新增AI智能分析功能（风险AI分析、延期AI诊断、AI项目周报）</em></p></body></html>
